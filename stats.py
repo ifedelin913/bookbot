@@ -3,7 +3,7 @@ def word_count(text):
     words = text.split()
     count = len(words)
 
-    return f"{count} words found in the document"
+    return count
 
 def char_count(text):
     # create empty dictionary for character counts
@@ -18,3 +18,21 @@ def char_count(text):
             char_count[char] = 1
     
     return char_count
+
+def sort_on(items):
+    return items["num"]
+
+def sort_char_count(chars):
+    char_list = [] # initialize empty list to store dicts
+
+    # iterate over each item of the dictionary, stored as char and count
+    # if char is alphabetical then it is stored as a dictionary with two
+    # key pairs in the char_list dict
+    for char, count in chars.items():
+        if char.isalpha():
+            char_list.append({"char": char, "num": count})
+
+    # char_list is sorted in reverse order by the "num" key pair value
+    char_list.sort(reverse = True, key = sort_on)
+
+    return char_list

@@ -1,5 +1,6 @@
 from stats import word_count
 from stats import char_count
+from stats import sort_char_count
 
 def get_book_text(file):
     #open local file and read into contents variable
@@ -12,11 +13,20 @@ def main():
     book = get_book_text("books/frankenstein.txt")
 
     # set text statistics to respective varibales
-    count_message = word_count(book)
+    count = word_count(book)
     char_counts = char_count(book)
+    sorted_list = sort_char_count(char_counts)
 
     #print text statistics
-    print(count_message)
-    print(char_counts)
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
+    print(f"Found {count} total words")
+    print("--------- Character Count -------")
+    
+    for dict in sorted_list:
+        print(f"{dict['char']}: {dict['num']}")
+    
+    print("============= END ===============")
 
 main()
